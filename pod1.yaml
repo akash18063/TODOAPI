@@ -1,0 +1,24 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: yamlex
+# spec:
+#   containers:
+#     - name: container1
+#       image: nginx
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yamlex
+  namespace: default
+  labels:
+    app: nginx
+    env: default
+spec:
+  containers:
+    - name: container1
+      image: nginx
+  nodeSelector:
+      gpu: nvidia

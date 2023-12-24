@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todoapp
+  namespace: {{ .Values.namespace.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: todoapi
+  template:
+    metadata:
+      labels:
+        app: todoapi
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_HOST
+              name: dbconfig
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_USER
+              name: dbconfig
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_PASSWORD
+              name: dbconfig
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              key: MYSQL_DATABASE
+              name: dbconfig
+        image: vijaynvb/todoapimysql:1.0
+        name: todoapi
+        ports:
+        - containerPort: 80
+      nodeSelector:
+        gpu: nvidia
