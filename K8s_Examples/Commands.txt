@@ -349,5 +349,3 @@ Task 2:
     kubectl delete pod <<todoapp-#######>> -n env-dev 
 
     kubectl get all -n env-dev 
-
-    * browser and access the service via nodeport publicip:port/swagger/index.html
