@@ -337,3 +337,17 @@ Task 1:
     kubectl get all -n env-dev 
 
     * browser and access the service via nodeport publicip:port/swagger/index.html
+
+Task 2:
+
+    vi task2.yaml 
+
+    kubectl apply -f task2.yaml 
+
+    kubectl get all -n env-dev 
+
+    kubectl delete pod <<todoapp-#######>> -n env-dev 
+
+    kubectl get all -n env-dev 
+
+    * browser and access the service via nodeport publicip:port/swagger/index.html
